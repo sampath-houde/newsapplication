@@ -2,8 +2,8 @@ package com.task.newsapp.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.newsapplication.ui.NewsViewModel
 import com.task.newsapp.model.NewsRepo
-import com.task.newsapp.ui.NewsViewModel
 import java.lang.IllegalArgumentException
 
 @Suppress("UNCHECKED_CAST")
