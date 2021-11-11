@@ -41,11 +41,15 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         callApi()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            callApi()
+        }
     }
 
     private fun callApi() {
 
-
+        binding.swipeRefresh.isRefreshing = false
         binding.banner.visibility = View.GONE
         binding.recyclerView.visibility = View.GONE
 
@@ -55,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar2.visibility = View.GONE
             when(response) {
                 is ApiResponseHandler.Success -> {
+                    binding.banner.visibility = View.GONE
                     binding.recyclerView.visibility = View.VISIBLE
                     val adapter = NewsAdapter(response.value.articles, this)
                     binding.recyclerView.adapter = adapter
